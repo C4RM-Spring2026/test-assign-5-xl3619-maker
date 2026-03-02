@@ -1,3 +1,5 @@
+import numpy as np
 
 def WhoAmI():
-    return('xl3619')
+    x = np.array(['xl3619'])
+    return x[0]
