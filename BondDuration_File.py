@@ -6,9 +6,7 @@ def getBondDuration(y, face, couponRate, m, ppy=1):
     c = face * couponRate / ppy
     t = np.arange(1, n + 1, dtype=float)
     df = (1.0 + r) ** (-t)
-
     cf = np.full(n, c, dtype=float)
     cf[-1] = cf[-1] + face
-
     pv = cf * df
     return (t * pv).sum() / pv.sum()
