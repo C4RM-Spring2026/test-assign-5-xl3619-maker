@@ -1,0 +1,15 @@
+import numpy as np
+
+def getBondDuration(y, face, couponRate, m, ppy=1):
+    n = int(m * ppy)
+    r = y / ppy
+    c = face * couponRate / ppy
+
+    t = np.arange(1, n + 1, dtype=float)
+    df = (1.0 + r) ** (-t)
+
+    cf = np.full(n, c, dtype=float)
+    cf[-1] += face                      
+
+    pvcf = cf * df
+    return (t * pvcf).sum() / pvcf.sum()
